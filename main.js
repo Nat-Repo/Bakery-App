@@ -79,6 +79,11 @@ bake_times = {
     fruit_bread : {
         name : 'Fruit bread: ',
         time : '370° for 24 minutes'
+    },
+
+    dummy_object : {
+        name : 'dummy object',
+        time : 'null'
     }
 }
 
@@ -201,7 +206,7 @@ function oz_converter(num, factor) {
 }
 
 function generate_bake_times(dict) {
-    let str = "";
+    let str = " \n";
 
     for (let i in dict) {
         let str1 = dict[i].name;
