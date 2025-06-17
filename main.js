@@ -53,36 +53,27 @@ function calculate_mix() {
             mix = mix_values.w_ww_bread;
             break;
     }
-
-    264
     
-    let lbs_value = inp_mix_input.value * 16;
-    let factor = lbs_value / mix.flour;
-    let base = (mix.base * factor) / 16;
-    let yeast = (mix.yeast * factor) / 16;
-    let white_water = (mix.w_water * factor) / 16;
-    let ww_water = (mix.ww_water * factor) / 16;
-
-    //Convert to strings
-    if (base === Math.floor(base)) {
-        base = base.toString() + " lb";
-    } else {
-        let oz = Math.floor(base);
-        let i = base - oz;
-        base = oz.toString() + " lb " + (i * 16).toString() + " oz";
-    }
-    if (yeast === Math.floor(yeast)) {
-        yeast = yeast.toString() + " lb";
-    } else {
-        let oz = Math.floor(yeast);
-        let i = yeast - oz;
-        yeast = oz.toString() + " lb " + (i * 16).toString() + " oz";
-    }
-
-    white_water = white_water.toString() + " lb";
-    ww_water = ww_water.toString() + " lb";
+    //Converts input lb value into ounces, fetches the mulitplication factor, then converts all values and return as string
+    let lbs_value       = inp_mix_input.value * 16;
+    let factor          = lbs_value / mix.flour;
+    let base            = oz_converter(mix.base, factor);
+    let yeast           = oz_converter(mix.yeast, factor);
+    let white_water     = (mix.w_water  * factor / 16).toString() + " lb";
+    let ww_water        = (mix.ww_water * factor / 16).toString() + " lb";
 
     p_mix_output.innerText = "Base: " + base + "\n" + "Yeast: " + yeast + "\n" + "W Water: " + white_water + "\n" + "W/W Water: " + ww_water;
 
 }
 
+//Converts a value in ounces, multiplies it by a factor, and converts it into a string displaying lbs and ounces
+function oz_converter(num, factor) {
+    let n = (num * factor) / 16;
+    if (n === Math.floor(n)) {
+        return n.toString() + " lb"
+    } else {
+        let n2 = Math.floor(n);
+        let n3 = n - n2;
+        return n2.toString() + " lb " + (n3 * 16).toString() + " oz";
+    }
+}
