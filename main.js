@@ -29,6 +29,59 @@ mix_values = {
     }
 }
 
+bake_times = {
+
+    croissants_danish_brioche : {
+        name : 'Croissants, Danish and Brioche: ',
+        time : '350° for 15 minutes'
+    },
+
+    butterpan : {
+        name : 'Butterpan: ',
+        time : '350° for 14 minutes'
+    },
+
+    hots_hams : {
+        name : 'Hots and Hams: ',
+        time : '350° for 16 minutes'
+    },
+
+    muffins_tops : {
+        name : 'Muffins and Tops: ',
+        time : '350° for 29 minutes, \ntake tops out at 18-19 minutes'
+    },
+
+    cookies : {
+        name : 'Cookies: ',
+        time : '340° for 12 minutes'
+    },
+
+    w_ww_bread : {
+        name : 'White and WW Bread: ',
+        time : '370° for 24 minutes'
+    },
+
+    crusty_kaiser : {
+        name : 'Crusty and kaisers: ',
+        time : '390° for 18 minutes, 5 seconds of steam'
+    },
+
+    sour_pump : {
+        name : 'Sourdough and pumpernickle: ',
+        time : '390° for 27 minutes, 20 seconds of steam'
+    },
+
+    sandwich_bread : {
+        name : 'Sandwich bread: ',
+        time : '370° for 30 minutes'
+    },
+
+    fruit_bread : {
+        name : 'Fruit bread: ',
+        time : '370° for 24 minutes'
+    }
+}
+
 //Fetch document elements
 p_mix_title     = document.getElementById('mix_title');
 p_mix_output    = document.getElementById('mix_output');
@@ -44,9 +97,16 @@ h_h1            = document.getElementById('header');
 //Initialize mix elements so they start off hidden
 window.addEventListener('DOMContentLoaded', function(event){
     h_h1.innerText                  ='Bakery App v' + version_number;
-    inp_mix_input.style.display     ="none";
-    inp_hidden.style.display        ="none";
-    btn_mix_button.style.display    ="none";
+
+    if(document.URL.includes('baketimes.html')) {
+        console.log("f");
+        let p = document.getElementById('bake_times');
+        p.innerText = generate_bake_times(bake_times).toString();
+    } else {
+        inp_mix_input.style.display     ="none";
+        inp_hidden.style.display        ="none";
+        btn_mix_button.style.display    ="none";
+    }
 });
 
 //Assign the mix to a value when selected
@@ -138,4 +198,16 @@ function oz_converter(num, factor) {
         let n3 = n - n2;
         return n2.toString() + " lb " + (n3 * 16).toString() + " oz";
     }
+}
+
+function generate_bake_times(dict) {
+    let str = "";
+
+    for (let i in dict) {
+        let str1 = dict[i].name;
+        let str2 = dict[i].time;
+        str += str1 + "\n" + str2 + '\n' + ' \n';
+    }
+
+    return str;
 }
