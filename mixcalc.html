@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+    <head>
+
+        <!--Initialize site-->
+        <title>Bakery App</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="styles.css">
+
+    </head>
+
+    <body>
+
+        <!-- Header -->
+        <div class="header">
+            <h1>Bakery App</h1>
+        </div>
+        
+        <!-- Navigation bar -->
+        <div class="navbar">
+            <a href="mixcalc.html">Mix Calculator</a>
+            <a href="#">Recipes</a>
+            <a href="index.html" class="right">Home</a>
+        </div>
+
+        <!--Formatting-->
+        <div class="row">
+
+            <div class="side">
+
+                <!--Mix Types-->
+                <button class="btn" onclick="assign_mix('w-w/w-bread')">W - W/W Bread </button>
+                <button class="btn" onclick="assign_mix('bun-dough')">Bun Dough</button>
+
+            </div>
+
+            <div class="main">
+                
+                <!--Calculator display-->
+                <p id="mix_title"></p>
+                <input type="text" id="mix_input" placeholder="input desired amount of flour in lbs">
+                <button id="mix_button" onclick='calculate_mix()'>Click to calculate</button>
+                <p id="mix_output"></p>
+
+            </div>
+
+        </div>
+
+        <!-- Reference js script -->
+        <script src="main.js"></script>
+    </body>
+
+</html>
