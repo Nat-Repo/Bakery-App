@@ -48,7 +48,7 @@ bake_times = {
 
     muffins_tops : {
         name : 'Muffins and Tops: ',
-        time : '350° for 29 minutes, \ntake tops out at 18-19 minutes'
+        time : '350° for 29 minutes, \n\ttake tops out at 18-19 minutes'
     },
 
     cookies : {
@@ -211,7 +211,7 @@ function generate_bake_times(dict) {
     for (let i in dict) {
         let str1 = dict[i].name;
         let str2 = dict[i].time;
-        str += str1 + "\n" + str2 + '\n' + ' \n';
+        str += "\t" + str1 + "\n\t" + str2 + '\n' + ' \n';
     }
 
     return str;

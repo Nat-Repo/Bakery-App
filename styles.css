@@ -110,6 +110,9 @@ body {
   opacity: 0.8;
 }
 
+#bake_times {
+  white-space: pre;
+}
 
 @media screen and (min-width: 700px) {
   .side > .btn {
