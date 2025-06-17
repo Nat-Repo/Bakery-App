@@ -14,16 +14,19 @@
     </head>
 
     <body>
-
+        <!-- Div for bg color -->
+        <div class="page"></div>
+        
         <!-- Header -->
         <div class="header">
-            <h1>Bakery App</h1>
+            <h1 id="header">Bakery App</h1>
         </div>
         
         <!-- Navigation bar -->
         <div class="navbar">
-            <a href="mixcalc.html">Mix Calculator</a>
+            <a href="mixcalc.html" class="mix_sel">Mix Calculator</a>
             <a href="#">Recipes</a>
+            <a href="#">Bake Times</a>
             <a href="index.html" class="right">Home</a>
         </div>
 
@@ -33,8 +36,8 @@
             <div class="side">
 
                 <!--Mix Types-->
-                <button class="btn" onclick="assign_mix('w-w/w-bread')">W - W/W Bread </button>
-                <button class="btn" onclick="assign_mix('bun-dough')">Bun Dough</button>
+                <button class="btn" onclick="assign_mix('w_ww_bread')">W - W/W Bread </button>
+                <button class="btn" onclick="assign_mix('w_bun_dough')">Bun Dough</button>
 
             </div>
 
@@ -42,7 +45,10 @@
                 
                 <!--Calculator display-->
                 <p id="mix_title"></p>
-                <input type="text" id="mix_input" placeholder="input desired amount of flour in lbs">
+                <div class="lbs">
+                    <input type="text" id="mix_input" placeholder="Input flour" class="pr">
+                    <input type="text" id="hidden_inp" readonly value="lbs" disabled="disabled" class="ch"/> 
+                </div>
                 <button id="mix_button" onclick='calculate_mix()'>Click to calculate</button>
                 <p id="mix_output"></p>
 
