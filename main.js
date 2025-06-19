@@ -46,9 +46,19 @@ bake_times = {
         time : '350° for 16 minutes'
     },
 
+    pizza_deluxe_cheese_buns : {
+        name : 'Pizza buns and deluxe cheese buns: ',
+        time : 'Pizze: 350° for 17. \n\tCheese: 350° for 14.'
+    },
+
     muffins_tops : {
         name : 'Muffins and Tops: ',
         time : '350° for 29 minutes, \n\ttake tops out at 18-19 minutes'
+    },
+
+    cinn_bun : {
+        name : 'Cinnamon buns: ',
+        time : '350° for 25'
     },
 
     cookies : {
@@ -69,6 +79,16 @@ bake_times = {
     sour_pump : {
         name : 'Sourdough and pumpernickle: ',
         time : '390° for 27 minutes, 20 seconds of steam'
+    },
+
+    harvest_alpine : {
+        name : 'Harvest and Alpine bread: ',
+        time : '390° for 24 minutes, 20 seconds of steam'
+    },
+
+    subs : {
+        name : 'Subs: ',
+        time : 'Same as alpine or white bread depending on type. \n\t Just take out after 15 mins'
     },
 
     sandwich_bread : {
