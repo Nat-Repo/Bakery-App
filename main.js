@@ -20,13 +20,22 @@ h_h1            = document.getElementById('header');
 //Load json and then initialize web page text
 async function initialize_page() {
 
+    //Get hostname to determine whether we are local
+    let nm = window.location.hostname;
+
     //Grab json and save to data
-    response  = await fetch('https://nat-repo.github.io/Bakery-App/data.json');
+    response  = await fetch(nm === "127.0.0.1" || nm === "localhost" || nm === "" ?
+        'data.json' :
+        'https://nat-repo.github.io/Bakery-App/data.json'
+    );
+
+    //Grab json data
     data      = await response.json();
 
     //Set page text from data
     await (async () => {
 
+        //Append version number
         h_h1.innerText ='Bakery App v' + version_number;
 
         if(document.URL.includes('baketimes.html')) {

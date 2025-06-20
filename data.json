@@ -100,5 +100,9 @@
             "yeast" : 20,
             "ww_water" : 416
         }
+    },
+
+    "recipes" : {
+        
     }
 }
