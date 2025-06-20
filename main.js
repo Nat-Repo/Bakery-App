@@ -21,7 +21,7 @@ h_h1            = document.getElementById('header');
 async function initialize_page() {
 
     //Grab json and save to data
-    response  = await fetch('/data.json');
+    response  = await fetch('data.json');
     data      = await response.json();
 
     //Set page text from data
