@@ -18,12 +18,12 @@
 
         "pizza_deluxe_cheese_buns" : {
             "name" : "Pizza buns and deluxe cheese buns: ",
-            "time" : "Pizze: 350° for 17. \n\tCheese: 350° for 14."
+            "time" : "Pizze: 350° for 17. \nCheese: 350° for 14."
         },
 
         "muffins_tops" : {
             "name" : "Muffins and Tops: ",
-            "time" : "350° for 29 minutes, \n\ttake tops out at 18-19 minutes"
+            "time" : "350° for 29 minutes, \ntake tops out at 18-19 minutes"
         },
 
         "cinn_bun" : {
@@ -58,7 +58,7 @@
 
         "subs" : {
             "name" : "Subs: ",
-            "time" : "Same as alpine or white bread depending on type. \n\t Just take out after 15 mins"
+            "time" : "Same as alpine or white bread depending on type. \n Just take out after 15 mins"
         },
 
         "sandwich_bread" : {
@@ -73,7 +73,7 @@
 
         "tarts" : {
             "name" : "Tarts: ",
-            "time" : "First, bake tart shells at 350° for 8 minutes \n\t Add fillings, then bake again at 350° for 18 minutes"
+            "time" : "First, bake tart shells at 350° for 8 minutes \n Add fillings, then bake again at 350° for 18 minutes"
         },
 
         "dummy_object" : {
@@ -122,13 +122,13 @@
 
         "jumbo_muffin" : {
             "name"          : "Jumbo muffin mix - Blueberry / Choco ( 1/2 bag ): ",
-            "ingredients"   : "24 lbs muffin mix \n\t 4 egg cartons \n\t oil to the black dot \n\t 6lbs water for choco, 5.4 for blueberry \n\t 4lbs of blueberry or chocolate chips",
+            "ingredients"   : "24 lbs muffin mix \n4 egg cartons \noil to the black dot \n6lbs water for choco, 5.4 for blueberry \n4lbs of blueberry or chocolate chips",
             "instructions"  : "Add eggs, oil, water, then muffin mix (liquids first). Once all smoothly mixed together, add chocolate chips or blueberries and mix on stir briefly"
         },
 
         "scones" : {
             "name"          : "Scones mix ( 1/2 bag )",
-            "ingredients"   : "22 lbs scone mix \n\t 12.4lbs water if mix is good, 11.6 otherwise \n\t 4 lbs of cheese, blueberries, or raisins",
+            "ingredients"   : "22 lbs scone mix \n12.4lbs water if mix is good, 11.6 otherwise \n4 lbs of cheese, blueberries, or raisins",
             "instructions"  : "Add water, then add scone mix. Mix together and once fully mixed add toppings. Mix on stir briefly"
         }
 

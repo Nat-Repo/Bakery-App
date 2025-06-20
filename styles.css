@@ -31,8 +31,8 @@ body {
   line-height: 1;
   list-style: none;
   overflow: hidden;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 8px;
+  padding-right: 8px;
   position: relative;
   text-align: left;
   text-decoration: none;
@@ -42,8 +42,7 @@ body {
   touch-action: manipulation;
   white-space: nowrap;
   will-change: box-shadow,transform;
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin: 4px;
 }
 
 .button-30:focus {
@@ -160,10 +159,8 @@ body {
 }
 
 #bake_times, #recipes {
-  white-space: pre;
-  overflow-wrap: break-word;
-  width: 100vw;
-  max-width: 100%
+  margin-left: 16px;
+  white-space: pre-wrap;
 }
 
 @media screen and (min-width: 700px) {
@@ -182,6 +179,11 @@ body {
   }
   .side{
     height : auto;
+    padding : 8px;
+  }
+  .navbar a { 
+    width: auto;
+    padding: 7px 10px;
   }
 }
 

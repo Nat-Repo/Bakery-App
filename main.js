@@ -197,7 +197,7 @@ function generate_bake_times(dict) {
         //console.log(dict[i]);
         let str1 = dict[i].name;
         let str2 = dict[i].time;
-        str += "\t" + str1 + "\n\t" + str2 + '\n' + ' \n';
+        str += str1 + "\n" + str2 + '\n' + ' \n';
     }
 
     //console.log(str);
@@ -212,7 +212,7 @@ function generate_recipes(dict) {
         let str1 = dict[i].name;
         let str2 = dict[i].ingredients;
         let str3 = dict[i].instructions;
-        str += "\t" + str1 + "\n\t" + str2 + "\n\t" + str3 + '\n' + ' \n';
+        str += str1 + "\n" + str2 + "\n" + str3 + '\n' + ' \n';
     }
 
     //console.log(str);
