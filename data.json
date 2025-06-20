@@ -1,6 +1,6 @@
 {
     "bake_times" : {
-        
+
         "croissants_danish_brioche" : {
             "name" : "Croissants, Danish and Brioche: ",
             "time" : "350° for 15 minutes"
@@ -73,7 +73,7 @@
 
         "dummy_object" : {
             "name" : "dummy object",
-            "time" : "null"
+            "time" : "null a"
         }
     },
 
