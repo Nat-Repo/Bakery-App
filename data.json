@@ -85,7 +85,7 @@
     "mix_values" : {
 
         "w_ww_bread" : {
-            "flour" : 704,
+            "em_flour" : 704,
             "base" : 176,
             "yeast" : 20,
             "w_water" : 496,
@@ -93,17 +93,28 @@
         },
 
         "w_bun_dough" : {
-            "flour" : 704,
+            "em_flour" : 704,
             "base" : 176,
             "yeast" : 20,
             "w_water" : 416
         },
 
         "ww_bun_dough" : {
-            "flour" : 704,
+            "em_flour" : 320,
+            "ww_flour" : 384,
             "base" : 176,
             "yeast" : 20,
-            "ww_water" : 416
+            "w_water" : 416
+        },
+
+        "crusty_kaiser": {
+            "d_flour" : 704,
+            "yeast" : 16,
+            "salt" : 14,
+            "sugar" : 14,
+            "s500" : 14,
+            "oil" : 14,
+            "w_water" : 448
         }
     },
 

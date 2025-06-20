@@ -39,6 +39,7 @@ async function initialize_page() {
         //Append version number
         h_h1.innerText ='Bakery App v' + version_number;
 
+        //Initialize elements depending on page
         if(document.URL.includes('baketimes.html')) {
 
             let p = document.getElementById('bake_times');
@@ -49,7 +50,7 @@ async function initialize_page() {
             let p_recipes = document.getElementById('recipes');
             p_recipes.innerText = generate_recipes(data.recipes);
 
-        } else {
+        } else if (document.URL.includes('mixcalc.html')) {
 
             inp_mix_input.style.display     ="none";
             inp_hidden.style.display        ="none";
@@ -88,6 +89,10 @@ function assign_mix(mix) {
         case('w_bun_dough'):
             p_mix_title.innerText = 'White Bun Dough'
             break;
+
+        case('ww_bun_dough') :
+            p_mix_title.innerText = '60% Bun Dough'
+            break;
     }
 
     p_mix_output.innerText = "";
@@ -108,32 +113,60 @@ function calculate_mix() {
 
         case('w_ww_bread'):
             mix     = data.mix_values.w_ww_bread;
-            factor  = lbs_value / mix.flour;
+            factor  = lbs_value / mix.em_flour;
             p_mix_title.innerText = 'White / Whole Wheat Bread'
             break;
 
         case('w_bun_dough'):
             mix     = data.mix_values.w_bun_dough;
-            factor  = lbs_value / mix.flour;
+            factor  = lbs_value / mix.em_flour;
             p_mix_title.innerText = 'White Bun Dough'
+            break;
+
+        case('ww_bun_dough'):
+            mix     = data.mix_values.ww_bun_dough;
+            factor  = lbs_value / (mix.em_flour + mix.ww_flour);
+            p_mix_title.innerText = '60% Bun Dough'
+            break;
+
+        case('crusty_kaiser'):
+            mix     = data.mix_values.crusty_kaiser;
+            factor  = lbs_value / mix.d_flour;
+            p_mix_title.innerText = 'Crusty / Kaiser Buns';
             break;
     }
     
-    //Calculate individual strings for each ingredient
-    let base            = oz_converter(mix.base, factor);
-    let yeast           = oz_converter(mix.yeast, factor);
-    let white_water     = (mix.w_water  * factor / 16).toString() + " lb";
-    let ww_water        = (mix.ww_water * factor / 16).toString() + " lb";
+    //Calculate individual strings for each ingredient. Make sure to check if mix has ingredient before assigning
+    let em_flour        = mix.hasOwnProperty('em_flour')    ? oz_converter(mix.em_flour,    factor) : "";
+    let ww_flour        = mix.hasOwnProperty('ww_flour')    ? oz_converter(mix.ww_flour,    factor) : "";
+    let d_flour         = mix.hasOwnProperty('d_flour')     ? oz_converter(mix.d_flour,     factor) : "";
+    let base            = mix.hasOwnProperty('base')        ? oz_converter(mix.base,        factor) : "";
+    let yeast           = mix.hasOwnProperty('yeast')       ? oz_converter(mix.yeast,       factor) : "";
+    let salt            = mix.hasOwnProperty('salt')        ? oz_converter(mix.salt,        factor) : "";
+    let sugar           = mix.hasOwnProperty('sugar')       ? oz_converter(mix.sugar,       factor) : "";
+    let s500            = mix.hasOwnProperty('s500')        ? oz_converter(mix.s500,        factor) : "";
+    let oil             = mix.hasOwnProperty('oil')         ? oz_converter(mix.oil,         factor) : "";
+
+    let white_water     = mix.hasOwnProperty('w_water')     ? (mix.w_water  * factor / 16).toString() + " lb" : "";
+    let ww_water        = mix.hasOwnProperty('ww_water')    ? (mix.ww_water * factor / 16).toString() + " lb" : "";
 
     //Create output string to display in browser, maybe make a function to generate string?
     switch(selected_mix) {
 
         case('w_ww_bread'):
-            p_mix_output.innerText = "Base: " + base + "\n" + "Yeast: " + yeast + "\n" + "W Water: " + white_water + "\n" + "W/W Water: " + ww_water;
+            p_mix_output.innerText = "Flour: " + em_flour + " - (Whole wheat or emerald)" + "\n" + "Base: " + base + "\n" + "Yeast: " + yeast + "\n" + "W Water: " + white_water + "\n" + "W/W Water: " + ww_water;
             break;
 
         case('w_bun_dough'):
-            p_mix_output.innerText = "Base: " + base + "\n" + "Yeast: " + yeast + "\n" + "Water: " + white_water;
+            p_mix_output.innerText = "Emerald Flour: " + em_flour + "\n" + "Base: " + base + "\n" + "Yeast: " + yeast + "\n" + "Water: " + white_water;
+            break;
+
+        case('ww_bun_dough'):
+            p_mix_output.innerText = "Emerald flour: " + em_flour + "\n" + "Whole wheat flour: " + ww_flour + "\n" + "Base: " + base + "\n" + "Yeast: " + yeast + "\n" + "Water: " + white_water;
+            break;
+
+        case('crusty_kaiser'):
+            p_mix_output.innerText = "Diamond flour: " + d_flour + "\n" + "Yeast: " + yeast + "\n" + "Salt: " + salt  + "\n" + "Sugar: " + sugar + "\n" + "S500: " + s500 + "\n" + "Oil: " + oil + "\n" + "Water: " + white_water;
             break;
     }
    
