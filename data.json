@@ -1,0 +1,104 @@
+{
+    "bake_times" : {
+        
+        "croissants_danish_brioche" : {
+            "name" : "Croissants, Danish and Brioche: ",
+            "time" : "350° for 15 minutes"
+        },
+
+        "butterpan" : {
+            "name" : "Butterpan: ",
+            "time" : "350° for 14 minutes"
+        },
+
+        "hots_hams" : {
+            "name" : "Hots and Hams: ",
+            "time" : "350° for 16 minutes"
+        },
+
+        "pizza_deluxe_cheese_buns" : {
+            "name" : "Pizza buns and deluxe cheese buns: ",
+            "time" : "Pizze: 350° for 17. \n\tCheese: 350° for 14."
+        },
+
+        "muffins_tops" : {
+            "name" : "Muffins and Tops: ",
+            "time" : "350° for 29 minutes, \n\ttake tops out at 18-19 minutes"
+        },
+
+        "cinn_bun" : {
+            "name" : "Cinnamon buns: ",
+            "time" : "350° for 25"
+        },
+
+        "cookies" : {
+            "name" : "Cookies: ",
+            "time" : "340° for 12 minutes"
+        },
+
+        "w_ww_bread" : {
+            "name" : "White and WW Bread: ",
+            "time" : "370° for 24 minutes"
+        },
+
+        "crusty_kaiser" : {
+            "name" : "Crusty and kaisers: ",
+            "time" : "390° for 18 minutes, 5 seconds of steam"
+        },
+
+        "sour_pump" : {
+            "name" : "Sourdough and pumpernickle: ",
+            "time" : "390° for 27 minutes, 20 seconds of steam"
+        },
+
+        "harvest_alpine" : {
+            "name" : "Harvest and Alpine bread: ",
+            "time" : "390° for 24 minutes, 20 seconds of steam"
+        },
+
+        "subs" : {
+            "name" : "Subs: ",
+            "time" : "Same as alpine or white bread depending on type. \n\t Just take out after 15 mins"
+        },
+
+        "sandwich_bread" : {
+            "name" : "Sandwich bread: ",
+            "time" : "370° for 30 minutes"
+        },
+
+        "fruit_bread" : {
+            "name" : "Fruit bread: ",
+            "time" : "370° for 24 minutes"
+        },
+
+        "dummy_object" : {
+            "name" : "dummy object",
+            "time" : "null"
+        }
+    },
+
+    "mix_values" : {
+
+        "w_ww_bread" : {
+            "flour" : 704,
+            "base" : 176,
+            "yeast" : 20,
+            "w_water" : 496,
+            "ww_water" : 512
+        },
+
+        "w_bun_dough" : {
+            "flour" : 704,
+            "base" : 176,
+            "yeast" : 20,
+            "w_water" : 416
+        },
+
+        "ww_bun_dough" : {
+            "flour" : 704,
+            "base" : 176,
+            "yeast" : 20,
+            "ww_water" : 416
+        }
+    }
+}

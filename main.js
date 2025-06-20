@@ -1,111 +1,10 @@
+
 //---PLEASE REFACTOR ALL OF THIS LATER LMAO ITS A MESS
 
 version_number  = '0.02';
 selected_mix    = '';
 
-//Dictionary storing all values in ounces
-mix_values = {
-
-    w_ww_bread : {
-        flour       : 704,
-        base        : 176,
-        yeast       : 20,
-        w_water     : 496,
-        ww_water    : 512
-    },
-
-    w_bun_dough : {
-        flour       : 704,
-        base        : 176,
-        yeast       : 20,
-        w_water     : 416
-    },
-
-    ww_bun_dough : {
-        flour       : 704,
-        base        : 176,
-        yeast       : 20,
-        ww_water    : 416
-    }
-}
-
-bake_times = {
-
-    croissants_danish_brioche : {
-        name : 'Croissants, Danish and Brioche: ',
-        time : '350° for 15 minutes'
-    },
-
-    butterpan : {
-        name : 'Butterpan: ',
-        time : '350° for 14 minutes'
-    },
-
-    hots_hams : {
-        name : 'Hots and Hams: ',
-        time : '350° for 16 minutes'
-    },
-
-    pizza_deluxe_cheese_buns : {
-        name : 'Pizza buns and deluxe cheese buns: ',
-        time : 'Pizze: 350° for 17. \n\tCheese: 350° for 14.'
-    },
-
-    muffins_tops : {
-        name : 'Muffins and Tops: ',
-        time : '350° for 29 minutes, \n\ttake tops out at 18-19 minutes'
-    },
-
-    cinn_bun : {
-        name : 'Cinnamon buns: ',
-        time : '350° for 25'
-    },
-
-    cookies : {
-        name : 'Cookies: ',
-        time : '340° for 12 minutes'
-    },
-
-    w_ww_bread : {
-        name : 'White and WW Bread: ',
-        time : '370° for 24 minutes'
-    },
-
-    crusty_kaiser : {
-        name : 'Crusty and kaisers: ',
-        time : '390° for 18 minutes, 5 seconds of steam'
-    },
-
-    sour_pump : {
-        name : 'Sourdough and pumpernickle: ',
-        time : '390° for 27 minutes, 20 seconds of steam'
-    },
-
-    harvest_alpine : {
-        name : 'Harvest and Alpine bread: ',
-        time : '390° for 24 minutes, 20 seconds of steam'
-    },
-
-    subs : {
-        name : 'Subs: ',
-        time : 'Same as alpine or white bread depending on type. \n\t Just take out after 15 mins'
-    },
-
-    sandwich_bread : {
-        name : 'Sandwich bread: ',
-        time : '370° for 30 minutes'
-    },
-
-    fruit_bread : {
-        name : 'Fruit bread: ',
-        time : '370° for 24 minutes'
-    },
-
-    dummy_object : {
-        name : 'dummy object',
-        time : 'null'
-    }
-}
+data = undefined;
 
 //Fetch document elements
 p_mix_title     = document.getElementById('mix_title');
@@ -118,21 +17,35 @@ btn_mix_button  = document.getElementById('mix_button');
 
 h_h1            = document.getElementById('header');
 
+//Load json and then initialize web page text
+async function initialize_page() {
 
-//Initialize mix elements so they start off hidden
-window.addEventListener('DOMContentLoaded', function(event){
-    h_h1.innerText                  ='Bakery App v' + version_number;
+    //Grab json and save to data
+    response  = await fetch('/data.json');
+    data      = await response.json();
 
-    if(document.URL.includes('baketimes.html')) {
-        console.log("f");
-        let p = document.getElementById('bake_times');
-        p.innerText = generate_bake_times(bake_times).toString();
-    } else {
-        inp_mix_input.style.display     ="none";
-        inp_hidden.style.display        ="none";
-        btn_mix_button.style.display    ="none";
-    }
-});
+    //Set page text from data
+    await (async () => {
+
+        h_h1.innerText ='Bakery App v' + version_number;
+
+        if(document.URL.includes('baketimes.html')) {
+
+            let p = document.getElementById('bake_times');
+            p.innerText = generate_bake_times(data.bake_times);
+
+        } else {
+
+            inp_mix_input.style.display     ="none";
+            inp_hidden.style.display        ="none";
+            btn_mix_button.style.display    ="none";
+
+        }
+
+    })();
+}
+
+initialize_page();
 
 //Assign the mix to a value when selected
 function assign_mix(mix) {
@@ -179,13 +92,13 @@ function calculate_mix() {
     switch(selected_mix) {
 
         case('w_ww_bread'):
-            mix     = mix_values.w_ww_bread;
+            mix     = data.mix_values.w_ww_bread;
             factor  = lbs_value / mix.flour;
             p_mix_title.innerText = 'White / Whole Wheat Bread'
             break;
 
         case('w_bun_dough'):
-            mix     = mix_values.w_bun_dough;
+            mix     = data.mix_values.w_bun_dough;
             factor  = lbs_value / mix.flour;
             p_mix_title.innerText = 'White Bun Dough'
             break;
@@ -229,10 +142,12 @@ function generate_bake_times(dict) {
     let str = " \n";
 
     for (let i in dict) {
+        //console.log(dict[i]);
         let str1 = dict[i].name;
         let str2 = dict[i].time;
         str += "\t" + str1 + "\n\t" + str2 + '\n' + ' \n';
     }
 
+    //console.log(str);
     return str;
 }
