@@ -73,12 +73,12 @@
 
         "tarts" : {
             "name" : "Tarts: ",
-            "time" : "First, bake tart shells at 350° for 8 minutes \n Add fillings, then bake again at 350° for 18 minutes"
+            "time" : "First, bake tart shells at 350° for 8 minutes \nAdd fillings, then bake again at 350° for 18 minutes"
         },
 
         "dummy_object" : {
-            "name" : "dummy object",
-            "time" : "null a"
+            "name" : "dummy object name",
+            "time" : "dummy object time"
         }
     },
 
