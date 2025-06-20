@@ -1,7 +1,7 @@
 
 //---PLEASE REFACTOR ALL OF THIS LATER LMAO ITS A MESS
 
-version_number  = '0.02';
+version_number  = '0.1';
 selected_mix    = '';
 
 data = undefined;
@@ -83,15 +83,19 @@ function assign_mix(mix) {
     //Set title text
     switch(selected_mix) {
         case('w_ww_bread'):
-            p_mix_title.innerText = 'White / Whole Wheat Bread'
+            p_mix_title.innerText = 'White / Whole Wheat Bread';
             break;
 
         case('w_bun_dough'):
-            p_mix_title.innerText = 'White Bun Dough'
+            p_mix_title.innerText = 'White Bun Dough';
             break;
 
         case('ww_bun_dough') :
-            p_mix_title.innerText = '60% Bun Dough'
+            p_mix_title.innerText = '60% Bun Dough';
+            break;
+
+        case ('crusty_kaiser') :
+            p_mix_title.innerText = 'Crusty / Kaiser Buns';
             break;
     }
 
@@ -114,19 +118,19 @@ function calculate_mix() {
         case('w_ww_bread'):
             mix     = data.mix_values.w_ww_bread;
             factor  = lbs_value / mix.em_flour;
-            p_mix_title.innerText = 'White / Whole Wheat Bread'
+            p_mix_title.innerText = 'White / Whole Wheat Bread';
             break;
 
         case('w_bun_dough'):
             mix     = data.mix_values.w_bun_dough;
             factor  = lbs_value / mix.em_flour;
-            p_mix_title.innerText = 'White Bun Dough'
+            p_mix_title.innerText = 'White Bun Dough';
             break;
 
         case('ww_bun_dough'):
             mix     = data.mix_values.ww_bun_dough;
             factor  = lbs_value / (mix.em_flour + mix.ww_flour);
-            p_mix_title.innerText = '60% Bun Dough'
+            p_mix_title.innerText = '60% Bun Dough';
             break;
 
         case('crusty_kaiser'):

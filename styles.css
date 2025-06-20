@@ -13,6 +13,8 @@ body {
 
 /* CSS */
 .button-30 {
+  -webkit-appearance: none;
+  border-radius: 0;
   align-items: center;
   appearance: none;
   background-color: #FCFCFD;
