@@ -71,6 +71,11 @@
             "time" : "370° for 24 minutes"
         },
 
+        "tarts" : {
+            "name" : "Tarts: ",
+            "time" : "First, bake tart shells at 350° for 8 minutes \n\t Add fillings, then bake again at 350° for 18 minutes"
+        },
+
         "dummy_object" : {
             "name" : "dummy object",
             "time" : "null a"
@@ -103,6 +108,18 @@
     },
 
     "recipes" : {
-        
+
+        "jumbo_muffin" : {
+            "name"          : "Jumbo muffin mix - Blueberry / Choco ( 1/2 bag ): ",
+            "ingredients"   : "24 lbs muffin mix \n\t 4 egg cartons \n\t oil to the black dot \n\t 6lbs water for choco, 5.4 for blueberry \n\t 4lbs of blueberry or chocolate chips",
+            "instructions"  : "Add eggs, oil, water, then muffin mix (liquids first). Once all smoothly mixed together, add chocolate chips or blueberries and mix on stir briefly"
+        },
+
+        "scones" : {
+            "name"          : "Scones mix ( 1/2 bag )",
+            "ingredients"   : "22 lbs scone mix \n\t 12.4lbs water if mix is good, 11.6 otherwise \n\t 4 lbs of cheese, blueberries, or raisins",
+            "instructions"  : "Add water, then add scone mix. Mix together and once fully mixed add toppings. Mix on stir briefly"
+        }
+
     }
 }

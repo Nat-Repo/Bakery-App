@@ -10,6 +10,7 @@ data = undefined;
 p_mix_title     = document.getElementById('mix_title');
 p_mix_output    = document.getElementById('mix_output');
 
+
 inp_mix_input   = document.getElementById('mix_input');
 inp_hidden      = document.getElementById('hidden_inp');
 
@@ -42,6 +43,11 @@ async function initialize_page() {
 
             let p = document.getElementById('bake_times');
             p.innerText = generate_bake_times(data.bake_times);
+
+        } else if (document.URL.includes('recipes.html')) {
+
+            let p_recipes = document.getElementById('recipes');
+            p_recipes.innerText = generate_recipes(data.recipes);
 
         } else {
 
@@ -160,3 +166,20 @@ function generate_bake_times(dict) {
     //console.log(str);
     return str;
 }
+
+function generate_recipes(dict) {
+    let str = " \n";
+
+    for (let i in dict) {
+        //console.log(dict[i]);
+        let str1 = dict[i].name;
+        let str2 = dict[i].ingredients;
+        let str3 = dict[i].instructions;
+        str += "\t" + str1 + "\n\t" + str2 + "\n\t" + str3 + '\n' + ' \n';
+    }
+
+    //console.log(str);
+    return str;
+}
+
+
