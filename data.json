@@ -132,5 +132,108 @@
             "instructions"  : "Add water, then add scone mix. Mix together and once fully mixed add toppings. Mix on stir briefly"
         }
 
+    },
+
+    "doughcalc" : {
+
+        "white_buns" : {
+
+            "values" : {
+                "flour" : 44,
+                "base" : 11,
+                "water" : 26,
+                "yeast" : 1.25
+            },
+
+            "dinner_bun" : {
+                "name" : "Dinner Bun",
+                "head_weight" : 4,
+                "pkg" : 3
+            },
+
+            "butterpan" : {
+                "name" : "Butterpan",
+                "head_weight" : 3.75,
+                "pkg" : 3
+            },
+
+            "hotdog" : {
+                "name" : "Hotdog",
+                "head_weight" : 4.25,
+                "pkg" : 4.5
+            },
+
+            "hamburger" : {
+                "name" : "Hamburger",
+                "head_weight" : 4.25,
+                "pkg" : 4.5
+            },
+
+            "bap" : {
+                "name" : "Scotch Baps",
+                "head_weight" : "NA fill later",
+                "pkg" : 6
+            },
+
+            "sub": {
+                "name" : "8 Inch Subs",
+                "head_weight" : "NA fill later",
+                "pkg" : 6
+            }
+
+        },
+
+        "60_buns" : {
+            
+            "values" : {
+                "flour" : 44,
+                "base" : 11,
+                "water" : 26,
+                "yeast" : 1.25
+            },
+
+            "dinner_bun" : {
+                "name" : "Dinner Bun",
+                "head_weight" : 4,
+                "pkg" : 3
+            },
+
+            "butterpan" : {
+                "name" : "Butterpan",
+                "head_weight" : 3.75,
+                "pkg" : 3
+            },
+
+            "hotdog" : {
+                "name" : "Hotdog",
+                "head_weight" : 4.25,
+                "pkg" : 4.5
+            },
+
+            "hamburger" : {
+                "name" : "Hamburger",
+                "head_weight" : 4.25,
+                "pkg" : 4.5
+            }
+
+        },
+
+        "crusty_kaiser" : {
+
+            "values" : {
+                "flour" : 44,
+                "water" : 28,
+                "yeast" : 1,
+                "salt_sugars_etc" : 3.5
+            }
+            
+        },
+
+        "60_crusty_kaiser" : {
+
+
+
+        }
+
     }
 }
