@@ -246,9 +246,17 @@ function populate_dough_fields(num) {
         case 0:
             category    = data.doughcalc.white_bread;
             break;
+        //WW Bread
+        case 1:
+            category    = data.doughcalc.ww_bread;
+            break;
         //Softroll
         case 2:
             category    = data.doughcalc.softroll;
+            break;
+        //WW Softroll
+        case 3:
+            category    = data.doughcalc.ww_softroll;
             break;
     }
 

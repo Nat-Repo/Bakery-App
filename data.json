@@ -189,6 +189,23 @@
 
         },
 
+        "ww_bread" : {
+
+            "values" : {
+                "flour" : 44,
+                "base" : 11,
+                "water" : 31,
+                "yeast" : 1
+            },
+
+            "ww_bread" : {
+                "name" : "40 WW Bread",
+                "head_weight" : 1.188,
+                "pkg" : 1
+            }
+            
+        },
+
         "softroll" : {
 
             "values" : {
@@ -236,7 +253,7 @@
 
         },
 
-        "60_buns" : {
+        "ww_softroll" : {
             
             "values" : {
                 "flour" : 44,
