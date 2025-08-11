@@ -1,7 +1,7 @@
 
 //---PLEASE REFACTOR ALL OF THIS LATER LMAO ITS A MESS
 
-version_number  = '0.1';
+version_number  = '0.2';
 selected_mix    = '';
 
 data = undefined;
