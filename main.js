@@ -314,9 +314,11 @@ function calculate_dough() {
 
     i = 1;
     f = 0;
+    
     for (t in values) {
         f += values[t];
     }
+
     while(true) {
         
         //devide full value weights by an 8th
