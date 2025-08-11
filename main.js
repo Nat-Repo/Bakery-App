@@ -237,7 +237,7 @@ function populate_dough_fields(num) {
     parent      = document.getElementById('main');
 
     head_div = document.createElement('div');
-    head_div.innerText = "Input amount of packages needed for each item";
+    head_div.innerText = "Input amount of packages needed for each item. \n The number before the name is the amount \n we should have in the fridge/freezer";
     head_div.setAttribute('class', 'pop');
     parent.appendChild(head_div);
 
@@ -314,7 +314,7 @@ function calculate_dough() {
 
     i = 1;
     f = 0;
-    
+
     for (t in values) {
         f += values[t];
     }
