@@ -87,7 +87,7 @@
         "w_ww_bread" : {
             "em_flour" : 704,
             "base" : 176,
-            "yeast" : 20,
+            "yeast" : 16,
             "w_water" : 496,
             "ww_water" : 512
         },
@@ -135,8 +135,61 @@
     },
 
     "doughcalc" : {
+        
+        "white_bread" : {
 
-        "white_buns" : {
+            "values" : {
+                "flour" : 44,
+                "base" : 11,
+                "water" : 31,
+                "yeast" : 1
+            },
+
+            "white_bread" : {
+                "name" : "35 White Bread",
+                "head_weight" : 1.188,
+                "pkg" : 1
+            },
+
+            "fruit_bread" : {
+                "name" : "Fruit Bread",
+                "head_weight" : 1.188,
+                "pkg" : 1
+            },
+
+            "raisin_bread" : {
+                "name" : "Raisin Bread",
+                "head_weight" : 1.188,
+                "pkg" : 1
+            },
+
+            "fergassa_bread" : {
+                "name" : "Fergassa",
+                "head_weight" : 1.188,
+                "pkg" : 1
+            },
+
+            "sandwich_bread" : {
+                "name" : "Sandwich Bread",
+                "head_weight" : 2.375,
+                "pkg" : 1
+            },
+
+            "cheese_buns" : {
+                "name" : "Cheesey Cheddar Bun",
+                "head_weight" : 8,
+                "pkg" : 3
+            },
+
+            "cheese_sticks" : {
+                "name" : "Cheese Sticks",
+                "head_weight" : 6,
+                "pkg" : 3
+            }
+
+        },
+
+        "softroll" : {
 
             "values" : {
                 "flour" : 44,
@@ -146,38 +199,38 @@
             },
 
             "dinner_bun" : {
-                "name" : "Dinner Bun",
+                "name" : "12 Dinner Bun",
                 "head_weight" : 4,
                 "pkg" : 3
             },
 
             "butterpan" : {
-                "name" : "Butterpan",
+                "name" : "24 Butterpan",
                 "head_weight" : 3.75,
                 "pkg" : 3
             },
 
             "hotdog" : {
-                "name" : "Hotdog",
+                "name" : "120 Hotdog",
                 "head_weight" : 4.25,
                 "pkg" : 4.5
             },
 
             "hamburger" : {
-                "name" : "Hamburger",
+                "name" : "90 Hamburger",
                 "head_weight" : 4.25,
                 "pkg" : 4.5
             },
 
             "bap" : {
-                "name" : "Scotch Baps",
-                "head_weight" : "NA fill later",
+                "name" : "24 Scotch Baps",
+                "head_weight" : 5,
                 "pkg" : 6
             },
 
             "sub": {
-                "name" : "8 Inch Subs",
-                "head_weight" : "NA fill later",
+                "name" : "12 Subs",
+                "head_weight" : 8.5,
                 "pkg" : 6
             }
 
@@ -226,7 +279,7 @@
                 "yeast" : 1,
                 "salt_sugars_etc" : 3.5
             }
-            
+
         },
 
         "60_crusty_kaiser" : {
@@ -234,6 +287,5 @@
 
 
         }
-
     }
 }

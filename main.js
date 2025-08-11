@@ -219,4 +219,119 @@ function generate_recipes(dict) {
     return str;
 }
 
+values      = {};
+category    = {};
+cat_arr     = [];
 
+function populate_dough_fields(num) {
+
+    values      = {};
+    category    = {};
+    cat_arr     = [];
+
+    elements = document.querySelectorAll(`.pop`);
+    elements.forEach(element => {
+        element.remove();
+    });
+
+    parent      = document.getElementById('main');
+
+    head_div = document.createElement('div');
+    head_div.innerText = "Input amount of packages needed for each item";
+    head_div.setAttribute('class', 'pop');
+    parent.appendChild(head_div);
+
+    switch(num) {
+        //White Bread
+        case 0:
+            category    = data.doughcalc.white_bread;
+            break;
+        //Softroll
+        case 2:
+            category    = data.doughcalc.softroll;
+            break;
+    }
+
+    values      = category.values;
+
+    for(item in category) {
+        if(category[item] == values) continue;
+
+        //Create input fields
+        input_field = document.createElement('input');
+
+        // Set attributes for the input field
+        input_field.setAttribute('type', 'text'); 
+        input_field.setAttribute('class', 'pop din'); 
+        input_field.setAttribute('placeholder', String(category[item].name)); 
+        
+        // Append the input field to the body of the document
+        parent.appendChild(input_field);
+
+        cat_arr.push(category[item])
+    }
+
+    calc_button = document.createElement('button');
+    calc_button.innerText = "Calculate";
+    calc_button.setAttribute('class', 'pop');
+    calc_button.addEventListener('click', function() {calculate_dough()});
+
+    result_div = document.createElement('div');
+    result_div.innerText = "Resulting value will display here";
+    result_div.setAttribute('class', 'pop');
+    result_div.setAttribute('id', 'resdiv');
+
+    parent.appendChild(calc_button);
+    parent.appendChild(result_div);
+}
+
+function calculate_dough() {
+    
+    weight      = 0;
+    result_div  = document.getElementById('resdiv');
+    inputs_list = document.getElementsByClassName('din');
+    inputs_arr  = [];
+
+    for (i of inputs_list) {
+        inputs_arr.push(i.value);
+    }
+
+    l           = inputs_arr.length;
+
+    for (let i = 0; i < l; i++) {
+
+        if (inputs_arr[i] == "") continue;
+
+        head_weight = cat_arr[i].head_weight;
+        pack        = cat_arr[i].pkg;
+
+        v = parseInt(inputs_arr[i]);
+        v = v / pack;
+        v = v * head_weight;
+
+        weight += v;
+    }
+
+    i = 1;
+    f = 0;
+    for (t in values) {
+        f += values[t];
+    }
+    while(true) {
+        
+        //devide full value weights by an 8th
+        s = f / 8
+        v = (weight) - (s * i);
+
+        if (v > 0) {
+            i+=1;
+        } else {
+            res_div = document.getElementById('resdiv')
+            res_div.innerText = `Calculated value: ${String(v)}, \nLbs needed in flour: ${String(i * 5.5)}`
+            break;
+        }
+        
+        //Emergency exit
+        if (i > 30) break;
+    }
+}

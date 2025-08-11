@@ -16,7 +16,7 @@
     <body>
         <!-- Div for bg color -->
         <div class="page"></div>
-
+        
         <!-- Header -->
         <div class="header">
             <h1 id="header">Bakery App</h1>
@@ -27,12 +27,29 @@
             <a href="mixcalc.html">Mix Calculator</a>
             <a href="recipes.html">Recipes</a>
             <a href="baketimes.html">Bake Times</a>
-            <a href="doughcalc.html">Dough Calc</a>
-            <a href="index.html" class="right"  style="color : yellow">Home</a>
+            <a href="doughcalc.html" style="color : yellow">Dough Calc</a>
+            <a href="index.html" class="right">Home</a>
         </div>
-        
-        <!-- Dummy text for now -->
-        <p>Dummy text, ignore</p>
+
+        <!--Formatting-->
+        <div class="row">
+
+            <div class="side">
+
+                <!--Mix Types-->
+                <button class="button-30" onclick="populate_dough_fields(0)"> White Bread </button>
+                <button class="button-30" onclick="populate_dough_fields(1)"> WW Bread </button>
+                <button class="button-30" onclick="populate_dough_fields(2)"> Softroll </button>
+                <button class="button-30" onclick="populate_dough_fields(3)"> WW Softroll </button>
+
+            </div>
+
+            <div class="main" id="main">
+                
+
+            </div>
+
+        </div>
 
         <!-- Reference js script -->
         <script src="main.js"></script>
