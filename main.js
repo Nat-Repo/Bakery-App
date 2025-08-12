@@ -223,7 +223,7 @@ values      = {};
 category    = {};
 cat_arr     = [];
 
-function populate_dough_fields(num) {
+function populate_dough_fields(num, ti) {
 
     values      = {};
     category    = {};
@@ -237,7 +237,7 @@ function populate_dough_fields(num) {
     parent      = document.getElementById('main');
 
     head_div = document.createElement('div');
-    head_div.innerText = "Input amount of packages needed for each item. \n The number before the name is the amount \n we should have in the fridge/freezer";
+    head_div.innerText = `Dough : ${ti}\n\n Input amount of packages needed for each item. \n The number before the name is the amount \n we should have in the fridge/freezer`;
     head_div.setAttribute('class', 'pop');
     parent.appendChild(head_div);
 
@@ -257,6 +257,14 @@ function populate_dough_fields(num) {
         //WW Softroll
         case 3:
             category    = data.doughcalc.ww_softroll;
+            break;
+        //Crusty
+        case 4:
+            category    = data.doughcalc.crusty_kaiser;
+            break;
+        //WW Crust
+        case 5:
+            category    = data.doughcalc.ww_crusty_kaiser;
             break;
     }
 
@@ -295,53 +303,74 @@ function populate_dough_fields(num) {
 
 function calculate_dough() {
     
+    // Initialize weight then fetch doc elements
     weight      = 0;
     result_div  = document.getElementById('resdiv');
     inputs_list = document.getElementsByClassName('din');
     inputs_arr  = [];
 
+    //Variable for holding string of how many heads per item
+    heads = "Amount of heads: \n"
+
+    //Loop over inputs and get their values
     for (i of inputs_list) {
         inputs_arr.push(i.value);
     }
 
-    l           = inputs_arr.length;
+    //Get length of inputs array
+    l = inputs_arr.length;
 
     for (let i = 0; i < l; i++) {
 
+        //If input is empty, skip to next loop
         if (inputs_arr[i] == "") continue;
 
+        //Get category values
+        cat_name    = cat_arr[i].name;
         head_weight = cat_arr[i].head_weight;
         pack        = cat_arr[i].pkg;
 
+        //Calculate amount of heads needed
         v = parseInt(inputs_arr[i]);
         v = v / pack;
+
+        //Round v up because you cant have a non integer value for a head
+        v = Math.ceil(v)
+
+        //Add head number rounded up to heads string
+        heads+=`${cat_name},    \tHeads: ${v}\n`
         v = v * head_weight;
 
+        //Increase total head weights
         weight += v;
     }
 
     i = 1;
     f = 0;
 
+    //Add every value together for a bag of this dough
     for (t in values) {
         f += values[t];
     }
 
     while(true) {
         
-        //devide full value weights by an 8th
+        // Devide full value weights by an 8th, essentially incrementing downards by 1/8 of a bag of flour
         s = f / 8
         v = (weight) - (s * i);
 
+        // If we still need more weight, loop again
         if (v > 0) {
             i+=1;
+
+        // Display final values to user
         } else {
             res_div = document.getElementById('resdiv')
-            res_div.innerText = `Calculated value: ${String(v)}, \nLbs needed in flour: ${String(i * 5.5)}`
+            res_div.innerText = `Calculated value: ${String(v)} \nLbs needed in flour: ${String(i * 5.5)}\n\n` + heads;
             break;
         }
         
         //Emergency exit
-        if (i > 30) break;
+        if (i > 50) break;
     }
 }

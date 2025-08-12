@@ -203,7 +203,7 @@
                 "head_weight" : 1.188,
                 "pkg" : 1
             }
-            
+
         },
 
         "softroll" : {
@@ -295,13 +295,54 @@
                 "water" : 28,
                 "yeast" : 1,
                 "salt_sugars_etc" : 3.5
+            },
+
+            "Crusty" : {
+                "name" : "Crusty Bun",
+                "head_weight" : 5,
+                "pkg" : 3
+            },
+
+            "Kaiser" : {
+                "name" : "Kaiser Bun",
+                "head_weight" : 6,
+                "pkg" : 6
+            },
+
+            "panini" : {
+                "name" : "Panini",
+                "head_weight" : 6,
+                "pkg" : 3
+            },
+
+            "footlong" : {
+                "name" : "Footlong Sub",
+                "head_weight" : 6,
+                "pkg" : 6
             }
+
 
         },
 
-        "60_crusty_kaiser" : {
+        "ww_crusty_kaiser" : {
+            "values" : {
+                "flour" : 44,
+                "water" : 28,
+                "yeast" : 1,
+                "salt_sugars_etc" : 3.5
+            },
 
+            "ww_crusty" : {
+                "name" : "WW Crusty",
+                "head_weight" : 5,
+                "pkg" : 3
+            },
 
+            "ww_kaiser" : {
+                "name" : "WW Kaiser",
+                "head_weight" : 6,
+                "pkg" : 6
+            }
 
         }
     }
