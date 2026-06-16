@@ -1,5 +1,10 @@
 {
     "bake_times" : {
+        
+        "strudels" : {
+            "name" : "Strudels, Scones, Parbakes, Applejack",
+            "time" : "Set oven to setting 7 and put a 10 min timer for parbakes \nSet another 10 min timer roughly for specialty danishs \nSlowly add time until strudels, scones and appljacks are done"
+        },
 
         "croissants_danish_brioche" : {
             "name" : "Croissants, Danish and Brioche: ",
@@ -74,23 +79,26 @@
         "tarts" : {
             "name" : "Tarts: ",
             "time" : "First, bake tart shells at 350° for 8 minutes \nAdd fillings, then bake again at 350° for 18 minutes"
-        },
-
-        "dummy_object" : {
-            "name" : "dummy object name",
-            "time" : "dummy object time"
         }
     },
 
     "mix_values" : {
 
-        "w_ww_bread" : {
+        "w_bread" : {
             "em_flour" : 704,
             "base" : 176,
             "yeast" : 16,
-            "w_water" : 496,
-            "ww_water" : 512
+            "w_water" : 496
         },
+
+        "ww_bread" : {
+            "ww_flour" : 704,
+            "base" : 176,
+            "yeast" : 8,
+            "ww_water" : 496,
+            "germ" : 14
+        },
+
 
         "w_bun_dough" : {
             "em_flour" : 704,
@@ -122,14 +130,38 @@
 
         "jumbo_muffin" : {
             "name"          : "Jumbo muffin mix - Blueberry / Choco ( 1/2 bag ): ",
-            "ingredients"   : "24 lbs muffin mix \n4 egg cartons \noil to the black dot \n6lbs water for choco, 5.4 for blueberry \n4lbs of blueberry or chocolate chips",
+            "ingredients"   : "- 22 lbs muffin mix \n- 4 egg cartons \n- oil to the black dot \n- 6lbs water\n- 4lbs of blueberry or chocolate chips",
             "instructions"  : "Add eggs, oil, water, then muffin mix (liquids first). Once all smoothly mixed together, add chocolate chips or blueberries and mix on stir briefly"
         },
 
+        "carrot_muffin" : {
+            "name"          : "Carrot Muffin ( Full bag )",
+            "ingredients"   : "",
+            "instructions"  : ""
+        },
+
+        "bran_muffin" : {
+            "name"          : "Raisin Bran Muffin",
+            "ingredients"   : "",
+            "instructions"  : ""
+        },
+
         "scones" : {
-            "name"          : "Scones mix ( 1/2 bag )",
-            "ingredients"   : "22 lbs scone mix \n12.4lbs water if mix is good, 11.6 otherwise \n4 lbs of cheese, blueberries, or raisins",
+            "name"          : "Scone mix ( 1/2 bag )",
+            "ingredients"   : "- 22 lbs scone mix \n- 12.4lbs water if mix is good, 11.6 otherwise \n- 4 lbs of cheese, blueberries, or raisins",
             "instructions"  : "Add water, then add scone mix. Mix together and once fully mixed add toppings. Mix on stir briefly"
+        },
+
+        "angel_food" : {
+            "name"          : "Angel Food ( Full bag )",
+            "ingredients"   : "",
+            "instructions"  : ""
+        },
+
+        "brownie" : {
+            "name"          : "Brownie ( Full bag )",
+            "ingredients"   : "",
+            "instructions"  : ""
         }
 
     },
@@ -151,6 +183,12 @@
                 "pkg" : 1
             },
 
+            "deli_sub" : {
+                "name" : "Deli Sub",
+                "head_weight" : 0.5,
+                "pkg" : 1
+            },
+
             "fruit_bread" : {
                 "name" : "Fruit Bread",
                 "head_weight" : 1.188,
@@ -159,12 +197,6 @@
 
             "raisin_bread" : {
                 "name" : "Raisin Bread",
-                "head_weight" : 1.188,
-                "pkg" : 1
-            },
-
-            "fergassa_bread" : {
-                "name" : "Fergassa",
                 "head_weight" : 1.188,
                 "pkg" : 1
             },
@@ -185,6 +217,18 @@
                 "name" : "Cheese Sticks",
                 "head_weight" : 6,
                 "pkg" : 3
+            },
+
+            "dinner_bun" : {
+                "name" : "12 Dinner Bun",
+                "head_weight" : 4,
+                "pkg" : 3
+            },
+
+            "butterpan" : {
+                "name" : "24 Butterpan",
+                "head_weight" : 3.75,
+                "pkg" : 3
             }
 
         },
@@ -202,6 +246,30 @@
                 "name" : "40 WW Bread",
                 "head_weight" : 1.188,
                 "pkg" : 1
+            },
+
+            "deli_sub" : {
+                "name" : "Deli Sub",
+                "head_weight" : 0.5,
+                "pkg" : 1
+            },
+
+            "sandwich_bread" : {
+                "name" : "Sandwich Bread",
+                "head_weight" : 2.375,
+                "pkg" : 1
+            },
+
+            "dinner_bun" : {
+                "name" : "Dinner Bun",
+                "head_weight" : 4,
+                "pkg" : 3
+            },
+
+            "butterpan" : {
+                "name" : "Butterpan",
+                "head_weight" : 3.75,
+                "pkg" : 3
             }
 
         },
@@ -215,27 +283,15 @@
                 "yeast" : 1.25
             },
 
-            "dinner_bun" : {
-                "name" : "12 Dinner Bun",
-                "head_weight" : 4,
-                "pkg" : 3
-            },
-
-            "butterpan" : {
-                "name" : "24 Butterpan",
-                "head_weight" : 3.75,
-                "pkg" : 3
-            },
-
             "hotdog" : {
                 "name" : "120 Hotdog",
-                "head_weight" : 4.25,
+                "head_weight" : 4.82,
                 "pkg" : 4.5
             },
 
             "hamburger" : {
                 "name" : "90 Hamburger",
-                "head_weight" : 4.25,
+                "head_weight" : 5.82,
                 "pkg" : 4.5
             },
 
@@ -262,27 +318,15 @@
                 "yeast" : 1.25
             },
 
-            "dinner_bun" : {
-                "name" : "Dinner Bun",
-                "head_weight" : 4,
-                "pkg" : 3
-            },
-
-            "butterpan" : {
-                "name" : "Butterpan",
-                "head_weight" : 3.75,
-                "pkg" : 3
-            },
-
             "hotdog" : {
                 "name" : "Hotdog",
-                "head_weight" : 4.25,
+                "head_weight" : 4.82,
                 "pkg" : 4.5
             },
 
             "hamburger" : {
                 "name" : "Hamburger",
-                "head_weight" : 4.25,
+                "head_weight" : 5.82,
                 "pkg" : 4.5
             }
 

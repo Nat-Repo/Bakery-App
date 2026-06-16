@@ -1,24 +1,46 @@
-
-//---PLEASE REFACTOR ALL OF THIS LATER LMAO ITS A MESS
-
-version_number  = '0.2';
+version_number  = '0.3';
 selected_mix    = '';
-
 data = undefined;
+
+//Create html templates
+let templates = {};
+templates.head = `<title>Bakery App</title>
+            <meta charset="UTF-8" maximum-scale=1>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="styles.css">`
+templates.body = (()=>{
+            return `<!-- Div for bg color -->
+            <div class="page"></div>
+
+            <!-- Header -->
+            <div class="header">
+                <h1 id="header">Bakery App</h1>
+            </div>
+            
+            <!-- Navigation bar -->
+            <div class="navbar">
+                <a href="mixcalc.html" style="color:${(()=>{return document.URL.includes('mixcalc.html')?'yellow':'white'})()}">Mix Calc</a>
+                <a href="recipes.html" style="color:${(()=>{return document.URL.includes('recipes.html')?'yellow':'white'})()}">Recipes</a>
+                <a href="baketimes.html" style="color:${(()=>{return document.URL.includes('baketimes.html')?'yellow':'white'})()}">Bake Times</a>
+                <a href="doughcalc.html" style="color:${(()=>{return document.URL.includes('doughcalc.html')?'yellow':'white'})()}">Dough Calc</a>
+                <a href="index.html" class="right" style="color:${(()=>{return document.URL.includes('index.html')?'yellow':'white'})()}">Home</a>
+            </div>`
+        })()
+// Append templates to page
+document.head.insertAdjacentHTML('beforeend',templates.head);
+document.body.insertAdjacentHTML('beforebegin',templates.body)
 
 //Fetch document elements
 p_mix_title     = document.getElementById('mix_title');
 p_mix_output    = document.getElementById('mix_output');
-
-
 inp_mix_input   = document.getElementById('mix_input');
 inp_hidden      = document.getElementById('hidden_inp');
-
 btn_mix_button  = document.getElementById('mix_button');
-
 h_h1            = document.getElementById('header');
 
-//Load json and then initialize web page text
+/**
+ * Load json data and initialize page elements
+ */
 async function initialize_page() {
 
     //Get hostname to determine whether we are local
@@ -60,7 +82,6 @@ async function initialize_page() {
 
     })();
 }
-
 initialize_page();
 
 //Assign the mix to a value when selected
@@ -82,18 +103,18 @@ function assign_mix(mix) {
     
     //Set title text
     switch(selected_mix) {
-        case('w_ww_bread'):
-            p_mix_title.innerText = 'White / Whole Wheat Bread';
+        case('w_bread'):
+            p_mix_title.innerText = 'White Bread';
             break;
-
+        case('ww_bread'):
+            p_mix_title.innerText = 'Whole Wheat Bread';
+            break;
         case('w_bun_dough'):
             p_mix_title.innerText = 'White Bun Dough';
             break;
-
         case('ww_bun_dough') :
             p_mix_title.innerText = '60% Bun Dough';
             break;
-
         case ('crusty_kaiser') :
             p_mix_title.innerText = 'Crusty / Kaiser Buns';
             break;
@@ -102,11 +123,14 @@ function assign_mix(mix) {
     p_mix_output.innerText = "";
 }
 
-//Calculate value for mix ingredients based off quantity of flour
+/**
+ * Calculates ingredients needed to mix, based off the inputed amount of flour
+ */
 function calculate_mix() {
 
     //Initialize lbs value and factor
-    let lbs_value       = inp_mix_input.value * 16;
+    let oz_in_lb        = 16
+    let lbs_value       = inp_mix_input.value * oz_in_lb;
     let factor          = 1;
 
     //Define temporary variable to store mix data
@@ -115,10 +139,16 @@ function calculate_mix() {
     //Grab mix from string
     switch(selected_mix) {
 
-        case('w_ww_bread'):
-            mix     = data.mix_values.w_ww_bread;
+        case('w_bread'):
+            mix     = data.mix_values.w_bread;
             factor  = lbs_value / mix.em_flour;
-            p_mix_title.innerText = 'White / Whole Wheat Bread';
+            p_mix_title.innerText = 'White Bread';
+            break;
+
+        case('ww_bread'):
+            mix     = data.mix_values.ww_bread;
+            factor  = lbs_value / mix.ww_flour;
+            p_mix_title.innerText = 'Whole Wheat Bread';
             break;
 
         case('w_bun_dough'):
@@ -144,8 +174,11 @@ function calculate_mix() {
     let em_flour        = mix.hasOwnProperty('em_flour')    ? oz_converter(mix.em_flour,    factor) : "";
     let ww_flour        = mix.hasOwnProperty('ww_flour')    ? oz_converter(mix.ww_flour,    factor) : "";
     let d_flour         = mix.hasOwnProperty('d_flour')     ? oz_converter(mix.d_flour,     factor) : "";
+
     let base            = mix.hasOwnProperty('base')        ? oz_converter(mix.base,        factor) : "";
     let yeast           = mix.hasOwnProperty('yeast')       ? oz_converter(mix.yeast,       factor) : "";
+    let germ            = mix.hasOwnProperty('germ')        ? oz_converter(mix.germ,        factor) : "";
+
     let salt            = mix.hasOwnProperty('salt')        ? oz_converter(mix.salt,        factor) : "";
     let sugar           = mix.hasOwnProperty('sugar')       ? oz_converter(mix.sugar,       factor) : "";
     let s500            = mix.hasOwnProperty('s500')        ? oz_converter(mix.s500,        factor) : "";
@@ -157,16 +190,20 @@ function calculate_mix() {
     //Create output string to display in browser, maybe make a function to generate string?
     switch(selected_mix) {
 
-        case('w_ww_bread'):
-            p_mix_output.innerText = "Flour: " + em_flour + " - (Whole wheat or emerald)" + "\n" + "Base: " + base + "\n" + "Yeast: " + yeast + "\n" + "W Water: " + white_water + "\n" + "W/W Water: " + ww_water;
+        case('w_bread'):
+            p_mix_output.innerText = "Emerald Flour: " + em_flour + "\n" + "Bread Base: " + base + "\n" + "Yeast: " + yeast + "\n" + "Water: " + white_water;
+            break;
+
+        case('ww_bread'):
+            p_mix_output.innerText = "Whole Wheat Flour: " + ww_flour + "\n" + "Bread Base: " + base + "\n" + "Yeast: " + yeast + "\n" + "Wheat Germ: " + germ + "\n" + "Water: " + ww_water;
             break;
 
         case('w_bun_dough'):
-            p_mix_output.innerText = "Emerald Flour: " + em_flour + "\n" + "Base: " + base + "\n" + "Yeast: " + yeast + "\n" + "Water: " + white_water;
+            p_mix_output.innerText = "Emerald Flour: " + em_flour + "\n" + "Softroll Base: " + base + "\n" + "Yeast: " + yeast + "\n" + "Water: " + white_water;
             break;
 
         case('ww_bun_dough'):
-            p_mix_output.innerText = "Emerald flour: " + em_flour + "\n" + "Whole wheat flour: " + ww_flour + "\n" + "Base: " + base + "\n" + "Yeast: " + yeast + "\n" + "Water: " + white_water;
+            p_mix_output.innerText = "Emerald flour: " + em_flour + "\n" + "Whole wheat flour: " + ww_flour + "\n" + "Softroll Base: " + base + "\n" + "Yeast: " + yeast + "\n" + "Water: " + white_water;
             break;
 
         case('crusty_kaiser'):
@@ -177,17 +214,20 @@ function calculate_mix() {
 
 }
 
-//Converts a value in ounces, multiplies it by a factor, and converts it into a string displaying lbs and ounces
-//Maybe make this more legible. Variables name are not good!
+/**
+ * Takes a number in ounces and a factor value and converts it into lbs
+ * @param {number} num 
+ * @param {float} factor 
+ * @returns string
+ */
 function oz_converter(num, factor) {
     let n = (num * factor) / 16;
     if (n === Math.floor(n)) {
         return n.toString() + " lb"
-    } else {
-        let n2 = Math.floor(n);
-        let n3 = n - n2;
-        return n2.toString() + " lb " + (n3 * 16).toString() + " oz";
-    }
+    } 
+    let n2 = Math.floor(n);
+    let n3 = n - n2;
+    return n2 == 0 ? (n3 * 16).toString() + " oz" : n2.toString() + " lb " + (n3 * 16).toString() + " oz";
 }
 
 function generate_bake_times(dict) {
@@ -212,35 +252,29 @@ function generate_recipes(dict) {
         let str1 = dict[i].name;
         let str2 = dict[i].ingredients;
         let str3 = dict[i].instructions;
-        str += str1 + "\n" + str2 + "\n" + str3 + '\n' + ' \n';
+        str += str1 + "\n" + str2 + "\n" + str3 + '\n' + '\n';
     }
 
     //console.log(str);
     return str;
 }
 
+// Create variables needed to calculate dough
 values      = {};
 category    = {};
 cat_arr     = [];
 
-function populate_dough_fields(num, ti) {
-
+/**
+ * Create and populate all html elements for dough calculation
+ * @param {number} num Value used for switch statement to select dough category from json
+ * @param {string} dough_name String used for name of dough to display
+ * @returns None
+ */
+function populate_dough_fields(num, dough_name) {
     values      = {};
     category    = {};
     cat_arr     = [];
-
-    elements = document.querySelectorAll(`.pop`);
-    elements.forEach(element => {
-        element.remove();
-    });
-
-    parent      = document.getElementById('main');
-
-    head_div = document.createElement('div');
-    head_div.innerText = `Dough : ${ti}\n\n Input amount of packages needed for each item. \n The number before the name is the amount \n we should have in the fridge/freezer`;
-    head_div.setAttribute('class', 'pop');
-    parent.appendChild(head_div);
-
+    // Fetch dough category from loaded json data
     switch(num) {
         //White Bread
         case 0:
@@ -268,8 +302,23 @@ function populate_dough_fields(num, ti) {
             break;
     }
 
+    // Clear previous elements when changing dough category
+    elements = document.querySelectorAll(`.pop`);
+    elements.forEach(element => {
+        element.remove();
+    });
+
+    // Get parent and create explanation text
+    parent      = document.getElementById('main');
+    head_div = document.createElement('div');
+    head_div.innerText = `Dough : ${dough_name}\n\n Input amount of packages needed for each item. \n The number before the name is the amount \n we should have in the fridge/freezer \n`;
+    head_div.setAttribute('class', 'pop');
+    parent.appendChild(head_div);
+
+    // Fetch dough values
     values      = category.values;
 
+    // Iterate over items in the category and create inputs for them
     for(item in category) {
         if(category[item] == values) continue;
 
@@ -287,20 +336,27 @@ function populate_dough_fields(num, ti) {
         cat_arr.push(category[item])
     }
 
+    // Create calculation button
     calc_button = document.createElement('button');
     calc_button.innerText = "Calculate";
     calc_button.setAttribute('class', 'pop');
     calc_button.addEventListener('click', function() {calculate_dough()});
 
+    // Create div to display calculated value
     result_div = document.createElement('div');
     result_div.innerText = "Resulting value will display here";
     result_div.setAttribute('class', 'pop');
     result_div.setAttribute('id', 'resdiv');
 
+    // Append created html elements to parent
     parent.appendChild(calc_button);
     parent.appendChild(result_div);
 }
 
+/**
+ * Calculates amount of flour needed to mix the amount of dough needed.
+ * Also displays how many heads of each item to scale
+ */
 function calculate_dough() {
     
     // Initialize weight then fetch doc elements
@@ -309,18 +365,17 @@ function calculate_dough() {
     inputs_list = document.getElementsByClassName('din');
     inputs_arr  = [];
 
-    //Variable for holding string of how many heads per item
+    // Variable for holding string of how many heads per item
     heads = "Amount of heads: \n"
 
-    //Loop over inputs and get their values
+    // Loop over inputs and get their values
     for (i of inputs_list) {
         inputs_arr.push(i.value);
     }
 
-    //Get length of inputs array
-    l = inputs_arr.length;
-
-    for (let i = 0; i < l; i++) {
+    // Get length of inputs array and loop over it
+    len = inputs_arr.length;
+    for (let i = 0; i < len; i++) {
 
         //If input is empty, skip to next loop
         if (inputs_arr[i] == "") continue;
@@ -331,46 +386,47 @@ function calculate_dough() {
         pack        = cat_arr[i].pkg;
 
         //Calculate amount of heads needed
-        v = parseInt(inputs_arr[i]);
-        v = v / pack;
+        amount_of_heads = parseInt(inputs_arr[i]);
+        amount_of_heads /= pack;
 
         //Round v up because you cant have a non integer value for a head
-        v = Math.ceil(v)
+        amount_of_heads = Math.ceil(amount_of_heads)
 
         //Add head number rounded up to heads string
-        heads+=`${cat_name},    \tHeads: ${v}\n`
-        v = v * head_weight;
+        heads += `${cat_name} - Heads: ${amount_of_heads}\n`
 
         //Increase total head weights
-        weight += v;
+        weight += amount_of_heads * head_weight;
     }
 
-    i = 1;
-    f = 0;
+    loop_count = 1;
+    all_value_weights = 0;
 
     //Add every value together for a bag of this dough
     for (t in values) {
-        f += values[t];
+        all_value_weights += values[t];
     }
 
+    weight_increment = all_value_weights / 8
     while(true) {
         
-        // Devide full value weights by an 8th, essentially incrementing downards by 1/8 of a bag of flour
-        s = f / 8
-        v = (weight) - (s * i);
+        // increment downwards from final weight by an 1/8th of a bag of flour until hitting zero
+        v = (weight) - (weight_increment * loop_count);
 
         // If we still need more weight, loop again
         if (v > 0) {
-            i+=1;
+            loop_count+=1;
 
         // Display final values to user
         } else {
+            // Calculate final flour weight by how many times we looped, multiplied by 1/8 of a bag of flour
+            final_flour_weight = loop_count * 5.5
             res_div = document.getElementById('resdiv')
-            res_div.innerText = `Calculated value: ${String(v)} \nLbs needed in flour: ${String(i * 5.5)}\n\n` + heads;
+            res_div.innerText = `\nLbs needed in flour: ${String(final_flour_weight)}\n\n` + heads + `\n\nDebug info, please ignore: ${String(v)}`;
             break;
         }
         
-        //Emergency exit
-        if (i > 50) break;
+        //Emergency break in case we loop too many times for some reason
+        if (loop_count > 50) break;
     }
 }

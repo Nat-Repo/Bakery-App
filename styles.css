@@ -147,6 +147,10 @@ body {
   position: relative;
 }
 
+.pop {
+  white-space: pre;
+}
+
 .ch {
   position: absolute;
   pointer-events: none;

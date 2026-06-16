@@ -1,45 +1,17 @@
 <!DOCTYPE html>
 
 <html lang = "en">
-
-    <head>
-
-        <!--Initialize site-->
-        <title>Bakery App</title>
-        <meta charset="UTF-8" maximum-scale=1>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <link rel="stylesheet" href="styles.css">
-
-    </head>
-
     <body>
-        <!-- Div for bg color -->
-        <div class="page"></div>
-        
-        <!-- Header -->
-        <div class="header">
-            <h1 id="header">Bakery App</h1>
-        </div>
-        
-        <!-- Navigation bar -->
-        <div class="navbar">
-            <a href="mixcalc.html" class="mix_sel" style="color : yellow">Mix Calc</a>
-            <a href="recipes.html">Recipes</a>
-            <a href="baketimes.html">Bake Times</a>
-            <a href="doughcalc.html">Dough Calc</a>
-            <a href="index.html" class="right">Home</a>
-        </div>
-
         <!--Formatting-->
         <div class="row">
 
             <div class="side">
 
                 <!--Mix Types-->
-                <button class="button-30" onclick="assign_mix('w_ww_bread')"> W / WW Bread </button>
+                <button class="button-30" onclick="assign_mix('w_bread')"> White Bread </button>
+                <button class="button-30" onclick="assign_mix('ww_bread')"> Whole Wheat Bread </button>
                 <button class="button-30" onclick="assign_mix('w_bun_dough')"> Softroll </button>
-                <button class="button-30" onclick="assign_mix('ww_bun_dough')"> WW Softroll </button>
+                <button class="button-30" onclick="assign_mix('ww_bun_dough')"> 60% Softroll </button>
                 <button class="button-30" onclick="assign_mix('crusty_kaiser')"> Crusty / Kaiser</button>
 
             </div>
@@ -62,5 +34,4 @@
         <!-- Reference js script -->
         <script src="main.js"></script>
     </body>
-
 </html>

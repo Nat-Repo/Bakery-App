@@ -1,60 +1,26 @@
 <!DOCTYPE html>
 
 <html lang = "en">
-
-    <head>
-
-        <!--Initialize site-->
-        <title>Bakery App</title>
-        <meta charset="UTF-8" maximum-scale=1>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <link rel="stylesheet" href="styles.css">
-
-    </head>
-
     <body>
-        <!-- Div for bg color -->
-        <div class="page"></div>
-        
-        <!-- Header -->
-        <div class="header">
-            <h1 id="header">Bakery App</h1>
-        </div>
-        
-        <!-- Navigation bar -->
-        <div class="navbar">
-            <a href="mixcalc.html">Mix Calc</a>
-            <a href="recipes.html">Recipes</a>
-            <a href="baketimes.html">Bake Times</a>
-            <a href="doughcalc.html" style="color : yellow">Dough Calc</a>
-            <a href="index.html" class="right">Home</a>
-        </div>
-
         <!--Formatting-->
         <div class="row">
 
             <div class="side">
-
                 <!--Mix Types-->
                 <button class="button-30" onclick="populate_dough_fields(0, 'White Bread')">        White Bread       </button>
-                <button class="button-30" onclick="populate_dough_fields(1, 'WW Bread')">           WW Bread          </button>
+                <button class="button-30" onclick="populate_dough_fields(1, 'WW Bread')">           Whole Wheat Bread          </button>
                 <button class="button-30" onclick="populate_dough_fields(2, 'Softroll')">           Softroll          </button>
-                <button class="button-30" onclick="populate_dough_fields(3, 'WW Softroll')">        WW Softroll       </button>
-                <button class="button-30" onclick="populate_dough_fields(4, 'Crusty / Kaiser')">    Crusty Kaiser     </button>
-                <button class="button-30" onclick="populate_dough_fields(5, 'WW Crusty / Kaiser')"> WW Crusty Kaiser  </button>
-
+                <button class="button-30" onclick="populate_dough_fields(3, 'WW Softroll')">        Whole Wheat Softroll       </button>
+                <button class="button-30" onclick="populate_dough_fields(4, 'Crusty / Kaiser')">    Crusty / Kaiser     </button>
+                <button class="button-30" onclick="populate_dough_fields(5, 'WW Crusty / Kaiser')"> Whole Wheat Crusty / Kaiser  </button>
+                <button class="button-30" onclick="populate_dough_fields(6, 'Multigrain')"> Multigrain  </button>
             </div>
 
-            <div class="main" id="main">
-                
-
-            </div>
+            <div class="main" id="main"></div>
 
         </div>
 
         <!-- Reference js script -->
         <script src="main.js"></script>
     </body>
-
 </html>
